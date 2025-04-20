@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SimpleScene.unity
+    guid: 42878c2cced0a7276a05f7a278d17ace
+  - enabled: 1
+    path: Assets/Scenes/LaunchScene.unity
+    guid: 6a2706e05261f63feac2c142ce9b0774
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 5ec8497adcb5fbb5ea0263169e6ee78a
+  - enabled: 1
+    path: Assets/Scenes/RosGameScene.unity
+    guid: 86255dc67eddd78a8b407a3d68aa7f39
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e8cd74e53a0f2ab89873ff6191c9237a, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 325d16b704d11edd19a8017aad4e1009, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
+  m_UseUCBPForAssetBundles: 0
