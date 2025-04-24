@@ -15,11 +15,16 @@ find_package(ament_cmake REQUIRED)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+include_directories(
+  include
+  include/robocon_desktop
+)
+
 set(PROJECT_SOURCES
-        src/main.cpp
-        src/mainwindow.cpp
-        src/mainwindow.h
-        src/mainwindow.ui
+    src/main.cpp
+    ui/mainwindow.ui
+    include/robocon_desktop/mainwindow.h
+    src/mainwindow.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
