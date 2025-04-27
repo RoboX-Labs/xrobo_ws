@@ -12,12 +12,29 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rviz_common REQUIRED)
+find_package(rviz_default_plugins REQUIRED)
+find_package(rviz_ogre_vendor REQUIRED)
+find_package(rviz_rendering REQUIRED)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+set(THIS_PACKAGE_INCLUDE_DEPENDS
+  rclcpp
+  rclcpp_components
+  rviz_common
+  rviz_default_plugins
+  rviz_ogre_vendor
+  rviz_rendering
+)
+
 include_directories(
-  include
-  include/robocon_desktop
+    include
+    ${rclcpp_INCLUDE_DIRS}
+    ${rviz_common_INCLUDE_DIRS}
+    ${Qt5Core_INCLUDE_DIRS}
+    ${Qt5Widgets_INCLUDE_DIRS}
 )
 
 set(PROJECT_SOURCES
@@ -54,7 +71,11 @@ endif()
 # add_executable(robocon_desktop src/main.cpp)
 # ament_target_dependencies(robocon_desktop)
 
-target_link_libraries(robocon_desktop PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(robocon_desktop PRIVATE Qt${QT_VERSION_MAJOR}::Widgets   
+  rviz_common::rviz_common
+  rviz_rendering::rviz_rendering
+  rviz_ogre_vendor::OgreMain
+  rviz_ogre_vendor::OgreOverlay)
 
 set_target_properties(robocon_desktop PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

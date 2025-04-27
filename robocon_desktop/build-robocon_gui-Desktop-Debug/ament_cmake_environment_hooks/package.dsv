@@ -1,0 +1,4 @@
+source;share/robocon_desktop/local_setup.bash
+source;share/robocon_desktop/local_setup.dsv
+source;share/robocon_desktop/local_setup.sh
+source;share/robocon_desktop/local_setup.zsh

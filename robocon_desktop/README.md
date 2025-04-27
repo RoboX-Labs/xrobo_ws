@@ -25,3 +25,8 @@
      DESTINATION lib/${PROJECT_NAME})
    ament_package()
    ```
+
+
+## Problems and Solutions
+1. [rviz_embed_test](https://github.com/mjeronimo/rviz_embed_test/blob/master/CMakeLists.txt)
+2. [qt_gui_ros2](https://github.com/bandasaikrishna/qt_gui_ros2/blob/main/qt_gui_ros2/CMakeLists.txt)
