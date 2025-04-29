@@ -29,38 +29,32 @@ find_package(OpenVINO REQUIRED)
 ################################################################################
 # Build
 ################################################################################
-include_directories(include)
 
 include_directories(
   ${OpenCV_INCLUDE_DIRS}
   /usr/include/intel/openvino/runtime/include
   ${OpenVINO_INCLUDE_DIRS}
+  include
 )
+  
+add_executable(openvino_node src/openvino_node.cpp src/inference.cc)
+ament_target_dependencies(openvino_node rclcpp vision_msgs sensor_msgs OpenCV cv_bridge)
 
-add_executable(object_detection src/object_detection/object_detection.cpp src/object_detection/inference.cc)
-ament_target_dependencies(object_detection rclcpp vision_msgs sensor_msgs OpenCV cv_bridge)
+add_executable(distance_estimation src/distance_estimation.cpp)
+ament_target_dependencies(distance_estimation OpenCV)
 
-target_link_libraries(object_detection
+target_link_libraries(openvino_node
   ${OpenCV_LIBS}
   /usr/lib/libopenvino.so # OpenVINO shared library
 )
-
-add_executable(web_cam src/object_detection/web_cam.cpp)
-ament_target_dependencies(web_cam rclcpp sensor_msgs cv_bridge OpenCV)
-
-# Add OpenCV using target_link_libraries to link the OpenCV libraries or can use ament_target_dependencies
-target_link_libraries(web_cam
-  ${OpenCV_LIBS}
-)
-
 
 ################################################################################
 # Install
 ################################################################################
 
 install(TARGETS
-  object_detection
-  web_cam
+  openvino_node
+  distance_estimation
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
