@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent, rviz_common::ros_integration::RosNodeAbs
     cmdvel_pub_ = rviz_ros_node_.lock()->get_raw_node()->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel", 10);
 
     setupShortcuts();
+    setupRvizWidget();
 }
 
 MainWindow::~MainWindow()
@@ -72,6 +73,11 @@ void MainWindow::setupShortcuts()
         twist_msg->angular.z = -1.0;
         cmdvel_pub_->publish(*twist_msg);
     });
+}
+
+void MainWindow::setupRvizWidget()
+{
+    ui->rvizwidget->
 }
 
 void MainWindow::on_pushButton_clicked()

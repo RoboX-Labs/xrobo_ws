@@ -7,7 +7,10 @@
 #include <geometry_msgs/msg/twist.hpp>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -21,6 +24,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_rvizwidget_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
 
@@ -28,5 +33,6 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmdvel_pub_;
 
     void setupShortcuts();
+    void setupRvizWidget();
 };
 #endif // MAINWINDOW_H
