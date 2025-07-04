@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
     }
-
-
     void FixedUpdate()
     {
         if (!useSim)

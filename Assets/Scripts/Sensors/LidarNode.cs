@@ -30,8 +30,8 @@ public class LidarNode : MonoBehaviour
     {
         LaserScanMsg lidarMsg = new LaserScanMsg();
 
-        lidarMsg.header.frame_id = "lidar_link";
-        // ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_link lidar_link
+        lidarMsg.header.frame_id = "lidar_frame";
+        // ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_link lidar_frame
 
         // Set the angle and range parameters
         lidarMsg.angle_min = 0.0f;
