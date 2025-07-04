@@ -1,4 +1,0 @@
-repository "Robocon2025@samnangkong499@cloud"
-  path "/"
-    br "/main"
-    co "/main"

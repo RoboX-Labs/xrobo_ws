@@ -14,7 +14,7 @@ public class CameraNode : MonoBehaviour
     public string topicName = "camera/image_raw";
 
     [SerializeField]
-    public float publishMessageFrequency = 0.1f; // 10 Hz (adjust as needed)
+    public float publishMessageFrequency = 0.1f; // 10 Hz
 
     [SerializeField]
     public Camera inputCamImage;
@@ -24,7 +24,6 @@ public class CameraNode : MonoBehaviour
 
     void Start()
     {
-        // Get ROS connection
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<ImageMsg>(topicName);
 

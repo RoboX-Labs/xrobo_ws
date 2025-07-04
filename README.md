@@ -11,3 +11,4 @@
 1. Install [Unity Hub](https://docs.unity3d.com/hub/manual/InstallHub.html)
 2. Install [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
 3. Install [Unity-Robotics-Hub](https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/README.md)
+4. [Rigidbody](https://docs.unity3d.com/ScriptReference/Rigidbody.html)

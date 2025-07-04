@@ -5,23 +5,18 @@ using RosMessageTypes.Sensor; // For LaserScan message
 public class LidarNode : MonoBehaviour
 {
     ROSConnection ros;
-    public string publishTopicName = "lidar_scan";
-    private float publishMessageFrequency = 0.1f; // 10 Hz
-
+    [SerializeField] public string TopicName = "scan";
+    [SerializeField] public float publishMessageFrequency = 0.1f;
     private float timeElapsed;
 
     void Start()
     {
-        // Initialize ROS connection
         ros = ROSConnection.GetOrCreateInstance();
-        ros.RegisterPublisher<LaserScanMsg>(publishTopicName);
-
-        Debug.Log("LidarNode initialized and ready to publish.");
+        ros.RegisterPublisher<LaserScanMsg>(TopicName);
     }
 
     void FixedUpdate()
     {
-        // Publish Lidar data at a fixed frequency
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed > publishMessageFrequency)
@@ -33,10 +28,8 @@ public class LidarNode : MonoBehaviour
 
     private void PublishLidarData()
     {
-        // Create a LaserScan message
         LaserScanMsg lidarMsg = new LaserScanMsg();
 
-        // Set the header (optional, can include timestamp and frame ID)
         lidarMsg.header.frame_id = "lidar_link";
         // ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_link lidar_link
 
@@ -47,7 +40,7 @@ public class LidarNode : MonoBehaviour
         lidarMsg.time_increment = publishMessageFrequency / LidarSensor.distances.Length;
         lidarMsg.scan_time = publishMessageFrequency;
         lidarMsg.range_min = 0.1f; // Minimum range value (e.g., 10 cm)
-        lidarMsg.range_max = LidarSensor.maxRange; // Maximum range value
+        lidarMsg.range_max = LidarSensor.MaxRange; // Maximum range value
 
         // Set the ranges (distance measurements)
         lidarMsg.ranges = new float[LidarSensor.distances.Length];
@@ -65,6 +58,6 @@ public class LidarNode : MonoBehaviour
         // }
 
         // Publish the message
-        ros.Publish(publishTopicName, lidarMsg);
+        ros.Publish(TopicName, lidarMsg);
     }
 }
