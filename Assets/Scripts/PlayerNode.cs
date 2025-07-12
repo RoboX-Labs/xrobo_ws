@@ -79,16 +79,28 @@ public class PlayerNode : MonoBehaviour
 
     void JoyChange(Joy joyMessage)
     {
-        player.Move(new Vector3(-joyMessage.axes[1], joyMessage.axes[3], joyMessage.axes[0]), new Vector3(0, joyMessage.axes[2], 0));
+        player.Move(new Vector3(-joyMessage.axes[1], 0, joyMessage.axes[0]), new Vector3(0, -joyMessage.axes[3], 0));
+        // player.MovePanTiltCamera(new Vector3(joyMessage.axes[9], joyMessage.axes[8], 0));
 
         if (joyMessage.buttons[0] == 1)
         {
+
             player.Jump();
         }
 
         if (joyMessage.buttons[1] == 1)
         {
+            player.Dribble();
+        }
+
+        if (joyMessage.buttons[2] == 1)
+        {
             player.Shoot();
+        }
+        
+        if (joyMessage.buttons[3] == 1)
+        {
+            player.Pass();
         }
     }
 
